@@ -25,7 +25,7 @@ sub_list = ipywidgets.widgets.Dropdown(
     disabled=False,
 )
 
-def volPlot(sub_list, signal_type ):
+def volPlotRight(sub_list, signal_type ):
     if signal_type == "Raw":
         signal="raw"
     else:
@@ -34,15 +34,22 @@ def volPlot(sub_list, signal_type ):
     sub=sub_list
      
         
-    #file='py/' + tis + 'VBM' + st + '-' + th + '.nii.gz'
+    file_right='coefficients/sub-cb' + sub + '_eyes_' + signal  + '_sm_right_bucket_coef.nii.gz'
 
-    file_right='coefficients/sub-cb' + sub + '_eyes_' + signal  + '_sm_left_bucket_coef.nii.gz'
-    file_left='coefficients/sub-cb' + sub + '_eyes_' + signal  + '_sm_right_bucket_coef.nii.gz'
-    #sub-cb01_eyes_raw_sm_left_bucket_coef
-
-
-    a=plotting.view_img(file_right, draw_cross=False, cmap='seismic', dim=0, threshold=1);
-    #b=plotting.view_img(file_left, draw_cross=False, cmap='seismic', dim=0, threshold=0.1);
+    a=plotting.view_img(file_right, draw_cross=False, cmap='seismic', dim=0, threshold=1)
     return a
 
 
+def volPlotLeft(sub_list, signal_type ):
+    if signal_type == "Raw":
+        signal="raw"
+    else:
+        signal="wav"
+    
+    sub=sub_list
+     
+        
+    file_left='coefficients/sub-cb' + sub + '_eyes_' + signal  + '_sm_left_bucket_coef.nii.gz'
+
+    b=plotting.view_img(file_left, draw_cross=False, cmap='seismic', dim=0, threshold=1)
+    return b
